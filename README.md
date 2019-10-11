@@ -6,7 +6,11 @@ Get the unique machine ID on Linux.
 This script has been tested with:
 
   - Ubuntu >= 18.04
-  - Fedora >= XX.XX
+  - Debian >= 10
+  - Fedora >= 30
+
+For more information on Linux machine IDs see
+<http://man7.org/linux/man-pages/man5/machine-id.5.html>
 
 Installation
 ------------
@@ -14,7 +18,7 @@ Installation
 ### Quick Install
 
     curl --silent https://raw.githubusercontent.com/PHLAK/linux-machine-id/master/machine-id \
-        | sudo tee /usr/local/bin/machine-id
+    | sudo install /dev/stdin /usr/local/bin/machine-id
 
 ### Manual Installation
 
@@ -28,7 +32,14 @@ Usage
 -----
 
 After following the instructions above you can run `machine-id` from a terminal
-to output the machine ID in various formats.
+to output a unique machine ID in various formats.
+
+    $ machine-id
+    8654c188be4386abe2ae2c0e0a682681f4cf2b33d71ac6cb8f6fba50d09735c8
+
+By default the command returns a sha256 hash of the device ID found in
+`/etc/machine-id`. You can use the `--raw` option to return the actual machine
+ID and the `--short` option to get the short version of the ID.
 
     Usage: machine-id [OPTION]...
     Get the machine's unique ID.
